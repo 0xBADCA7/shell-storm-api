@@ -36,7 +36,7 @@ class ShellStorm():
             return None
 
         data_dl = []
-        for data in data_l: 
+        for data in data_l:
             try:
                 desc = data.split("::::")
                 try:
@@ -57,12 +57,12 @@ class ShellStorm():
                              'ScUrl': desc[4],
                              'ScSize': 0
                            }
-                    
-                    
+
+
                 data_dl.append(dico)
             except:
                 pass
-        
+
         try:
             return sorted(data_dl, key=lambda x: x['ScSize'], reverse=True)
         except Exception:
@@ -148,9 +148,12 @@ if __name__ == "__main__":
             sys.exit(0)
 
         print "Found %d shellcodes" % len(res_dl)
-        print "%s\t%s" %(Color.blue("ScId"), Color.blue("Title"))
+        print "%s\t%s %s" %(Color.blue("ScId"), Color.blue("Size"), Color.blue("Title"))
         for data_d in res_dl:
-            print "[%s]\t%s - %s" %(Color.yellow(data_d['ScId']), data_d['ScArch'], data_d['ScTitle'])
+            if data_d['ScSize'] == 0:
+                print "[%s]\tn/a  %s - %s" %(Color.yellow(data_d['ScId']), data_d['ScArch'], data_d['ScTitle'])
+            else:
+                print "[%s]\t%s%s - %s" %(Color.yellow(data_d['ScId']), str(data_d['ScSize']).ljust(5), data_d['ScArch'], data_d['ScTitle'])
 
     elif mod == "-display":
         if len(sys.argv) < 3:
