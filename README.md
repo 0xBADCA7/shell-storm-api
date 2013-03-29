@@ -3,9 +3,6 @@ shell-storm API
 
 Search and display all shellcodes in shell-storm database.
 
-* [Web Site Project](http://shell-storm.org/project/shell-storm-API/)
-
-
 Usage
 -----
 
